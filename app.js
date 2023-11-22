@@ -68,11 +68,22 @@ const pushToInflux = async (influx, metrics) => {
     const timestamp = new Date();
     let writeClient = influx.getWriteApi(process.env.INFLUXDB_ORG, process.env.INFLUXDB_BUCKET, 'ns')
     for (let [measurement, value] of Object.entries(metrics)) {
-      let point = new Point(measurement)
-            .intField('value', value)
-            .timestamp(timestamp);
-      log(`Writing value '${value}' to '${measurement}' in InfluxDB`);
-      await writeClient.writePoint(point);
+
+      if (value) {
+
+        let point = new Point(measurement)
+          .intField('value', value)
+          .timestamp(timestamp);
+        log(`Writing value '${value}' to '${measurement}' in InfluxDB`);
+        await writeClient.writePoint(point);
+
+      } else {
+
+        log(`Unable to write value to '${measurement}' in InfluxDB as the data is not there or is null`);
+
+      }
+
+
     }
 
 };
@@ -92,7 +103,6 @@ const pushToInflux = async (influx, metrics) => {
         log(
             `Speedtest results - Download: ${speedMetrics.download_bandwidth}, Upload: ${speedMetrics.upload_bandwidth}, Ping: ${speedMetrics.ping_latency}`
         );
-        console.log(speedMetrics);
         await pushToInflux(influx, speedMetrics);
 
         log(`Sleeping for ${process.env.SPEEDTEST_INTERVAL} seconds...`);
