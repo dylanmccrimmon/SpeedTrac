@@ -71,7 +71,7 @@ const pushToInflux = async (influx, metrics) => {
       let point = new Point(measurement)
             .intField('value', value)
             .timestamp(timestamp);
-
+      log(`Writing value '${value}' to '${measurement}' in InfluxDB`);
       await writeClient.writePoint(point);
     }
 
