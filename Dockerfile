@@ -1,7 +1,7 @@
 FROM debian:10-slim AS get-speedtest
 
 RUN apt-get update && apt-get install curl gnupg1 apt-transport-https dirmngr lsb-release -y
-RUN curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
+RUN curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | bash
 RUN apt-get install speedtest
 
 FROM alpine as install-dependencies
