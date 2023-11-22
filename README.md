@@ -11,7 +11,7 @@ The docker image is inspired by https://github.com/frdmn/docker-speedtest.
 ## Prerequisites
 - Docker
 - InfluxDB v2 Instance
-- [Docker Image](https://hub.docker.com/_/influxdb/) 
+  - [Docker Image](https://hub.docker.com/_/influxdb/) 
 
 ## Getting started
 ### Installation
