@@ -1,0 +1,17 @@
+{
+    "name": "speedtrac",
+    "version": "1.0.0",
+    "author": "Dylan McCrimmon",
+    "homepage": "https://github.com/dylanmccrimmon/SpeedTrac",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js"
+    },
+    "license": "Apache License 2.0",
+    "dependencies": {
+      "@influxdata/influxdb-client": "^1.33.2",
+      "delay": "^4.3.0",
+      "execa": "^4.0.0"
+    }
+  }
