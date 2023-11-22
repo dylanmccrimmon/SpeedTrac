@@ -58,10 +58,7 @@ const getSpeedMetrics = async () => {
     ping_low: result.ping.low,
     ping_high: result.ping.high,
     packet_loss: result.packetLoss,
-    speedtest_server_id: result.server.id,
-    speedtest_server_name: result.server.name,
-    speedtest_server_location: result.server.location,
-    speedtest_server_country: result.server.country,
+    speedtest_server_id: result.server.id
   };
 };
 
@@ -70,7 +67,6 @@ const pushToInflux = async (influx, metrics) => {
 
     const timestamp = new Date();
     let writeClient = influx.getWriteApi(process.env.INFLUXDB_ORG, process.env.INFLUXDB_BUCKET, 'ns')
-    
     for (let [measurement, value] of Object.entries(metrics)) {
       let point = new Point(measurement)
             .intField('value', value)
@@ -94,7 +90,7 @@ const pushToInflux = async (influx, metrics) => {
         log("Starting speedtest...");
         const speedMetrics = await getSpeedMetrics();
         log(
-            `Speedtest results - Download: ${speedMetrics.download}, Upload: ${speedMetrics.upload}, Ping: ${speedMetrics.ping}`
+            `Speedtest results - Download: ${speedMetrics.download_bandwidth}, Upload: ${speedMetrics.upload_bandwidth}, Ping: ${speedMetrics.ping_latency}`
         );
         await pushToInflux(influx, speedMetrics);
 
