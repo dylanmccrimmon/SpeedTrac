@@ -92,7 +92,7 @@ const pushToInflux = async (influx, metrics) => {
         log(
             `Speedtest results - Download: ${speedMetrics.download_bandwidth}, Upload: ${speedMetrics.upload_bandwidth}, Ping: ${speedMetrics.ping_latency}`
         );
-        log('Speedtest JSON results: ' + speedMetrics);
+        console.log(speedMetrics);
         await pushToInflux(influx, speedMetrics);
 
         log(`Sleeping for ${process.env.SPEEDTEST_INTERVAL} seconds...`);
