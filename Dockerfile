@@ -8,7 +8,7 @@ FROM alpine as install-dependencies
 RUN apk add --no-cache npm
 WORKDIR /build
 COPY . .
-RUN npm ci
+RUN npm install
 
 FROM alpine as prod-stage
 RUN apk add --no-cache nodejs
