@@ -1,0 +1,14 @@
+version: "3"
+services:
+    SpeedTrac:
+        tty: true
+        container_name: SpeedTrac
+        environment:
+            - SPEEDTEST_INTERVAL=30
+            - SPEEDTEST_HOST=local
+            - INFLUXDB_URL=YOUR_INFLUXDB_URL
+            - INFLUXDB_ORG=YOUR_INFLUXDB_ORG
+            - INFLUXDB_BUCKET=YOUR_INFLUXDB_BUCKET
+            - INFLUXDB_TOKEN=YOUR_INFLUXDB_TOKEN
+        restart: unless-stopped
+        image:  speedtrac-dev
