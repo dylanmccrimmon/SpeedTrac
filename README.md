@@ -18,26 +18,26 @@ The docker image is inspired by https://github.com/frdmn/docker-speedtest.
 Automated builds of the image.
 
 ``` bash
-docker pull dylanmccrimmon/speedtrac
+docker pull ghcr.io/dylanmccrimmon/speedtrac:latest
 ```
 
 Build the image yourself directly from Git.
 
 ``` bash
-docker build https://github.com/dylanmccrimmon/SpeedTrac.git --tag 'dylanmccrimmon/speedtrac:dev'
+docker build https://github.com/dylanmccrimmon/SpeedTrac.git --tag 'ghcr.io/dylanmccrimmon/speedtrac:dev'
 ```
 
 ### Quick Start
 ``` bash
 docker run --name SpeedTrac \
--e SPEEDTEST_INTERVAL=30 \
--e SPEEDTEST_HOST=local \
--e INFLUXDB_URL=YOUR_INFLUXDB_URL \
--e INFLUXDB_ORG=YOUR_INFLUXDB_ORG \
--e INFLUXDB_BUCKET=YOUR_INFLUXDB_BUCKET \
--e INFLUXDB_TOKEN=YOUR_INFLUXDB_TOKEN \
---restart unless-stopped \
-dylanmmcrimmon/speedtrac
+  -e SPEEDTEST_INTERVAL=30 \
+  -e SPEEDTEST_HOST=local \
+  -e INFLUXDB_URL=YOUR_INFLUXDB_URL \
+  -e INFLUXDB_ORG=YOUR_INFLUXDB_ORG \
+  -e INFLUXDB_BUCKET=YOUR_INFLUXDB_BUCKET \
+  -e INFLUXDB_TOKEN=YOUR_INFLUXDB_TOKEN \
+  --restart unless-stopped \
+  ghcr.io/dylanmccrimmon/speedtrac:latest
 ```
 
 *Alternatively, you can use the sample [docker-compose.yml](docker-compose.yml) file to start the container using [Docker Compose](https://docs.docker.com/compose/).*

@@ -11,4 +11,4 @@ services:
             - INFLUXDB_BUCKET=YOUR_INFLUXDB_BUCKET
             - INFLUXDB_TOKEN=YOUR_INFLUXDB_TOKEN
         restart: unless-stopped
-        image:  speedtrac-dev
+        image:  ghcr.io/dylanmccrimmon/speedtrac:latest
